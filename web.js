@@ -41,7 +41,7 @@ const smoothScroll = ()=>{
 
     // scrolling smooth scroll
     const scroll = new SmoothScroll('.navbar a[href*="#"]',{
-        speed: 800
+        speed: 600
         });
 }
 
