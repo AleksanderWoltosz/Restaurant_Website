@@ -1,4 +1,3 @@
-import jump from './node_modules/jump.js/dist/jump.module.js';
 
 const app = function(){
 
@@ -27,19 +26,25 @@ const navShow = ()=> {
     }
     showMenu();
 
-// scrolling jump.js
-    const smoothScroll = ()=>{
-    document.querySelector('.btnScroll').addEventListener('click', ()=>{
-    jump('.about-us');
-    });
-    document.querySelector('#arrow-up').addEventListener('click', ()=>{
-        jump('.start');
+// scrolling jQuery
+const smoothScroll = ()=>{
+    $('#btnScroll').on('click', function(){
+        $('body,html').animate({
+            scrollTop: $('#about').offset().top
+        }, 800)
     })
+    $('#arrow-up').on('click', function(){
+        $('body, html').animate({
+            scrollTop: 0
+        }, 1000)
+    })
+
     // scrolling smooth scroll
     const scroll = new SmoothScroll('.navbar a[href*="#"]',{
-    speed: 800
-    });
-    }
+        speed: 800
+        });
+}
+
 smoothScroll();
 };
 
