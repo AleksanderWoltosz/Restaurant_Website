@@ -1,0 +1,574 @@
+// colors
+$white: rgba(255, 255, 255, 0.986);
+$orange: #FF7518;
+
+// mixins
+@mixin logo{
+    padding: 1rem 0;
+    text-transform: uppercase;
+    font-size: 3rem;
+    letter-spacing: 1.3rem;
+}
+@mixin flexCenter{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+// css
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 10px;
+}
+
+.website-wrapper{
+    max-width: 1400px;
+    margin: 0 auto;
+    font-family: 'Raleway', sans-serif;
+}
+
+section.start{
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    text-align: center;
+    height: 100vh;
+    background-color: #000;
+    background-image: linear-gradient(rgba(46, 46, 44, 0.8), rgba(46, 46, 44, 0.8)), url("/img/mae-mu-I7A_pHLcQK8-unsplash.jpg");
+    background-size: cover;
+    background-position: center;
+
+    .header{
+        nav{
+            margin-top: 5%;
+        }
+    
+        .logo{
+            margin-bottom: 5%;
+            color: $white;
+            border-top: 3px solid $white;
+            border-bottom: 3px solid $white;
+            @include logo();    
+        }
+        .nav-links{
+            position: fixed;
+            top: 0;
+            left: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            width: 100vw;
+            justify-content: space-around;
+            text-align: center;
+            pointer-events: none;
+            z-index: 2;
+            opacity: 0;
+            transition: opacity .3s;
+        }
+        .nav-links li{
+            list-style: none;
+        }
+        .nav-links a{
+            text-transform: uppercase;
+            font-size: 1.7rem;
+            color: $white;
+            text-decoration: none;
+            padding: 0 15px;
+            letter-spacing: 1px;
+            transition: color .3s;
+            &:hover{
+                color: $orange;
+            }
+
+        }
+        .nav-links.active{
+            background: #3E3939;
+            pointer-events: all;
+            opacity: 1;
+        }
+        .burger {
+            position: fixed;
+            top: 1%;
+            left: 2%;
+            padding: 7px 7px;
+            background: #222;
+            cursor: pointer;
+            z-index: 22;
+        }
+        
+        div.burger div {
+            height: 2px;
+            width: 24px;
+            margin: 5px;
+            background-color: rgb(226, 226, 226);
+            transition: .3s linear;
+        }
+        .toggle .line1{
+            transform: rotate(-45deg) translate(-5px, 5px);
+        }
+        .toggle .line2{
+            opacity: 0;
+        }
+        .toggle .line3{
+            transform: rotate(45deg) translate(-5px, -5px);
+        }
+    }
+     .motto-wrapper{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: $white;
+        h2{
+            font-size: 4.2rem;
+            margin-bottom: 3%;
+        }
+        p{
+            font-size: 1.6rem;
+            color: $orange;
+        }
+    }
+
+    .arrow{
+        position: absolute;
+        top: 90%;
+        left: 50%;
+        transform: translatex(-50%);
+        div{
+            display: block;
+            width: 20px;
+            height: 20px;
+            border-bottom: 1px solid $white;
+            border-right: 1px solid $white;
+            transform: rotate(45deg);
+            margin: -10px;
+            animation: arrow 2s infinite;
+            cursor: pointer;
+        }
+    }
+    #arrow-up{
+        position: fixed;
+        bottom: 2%;
+        right: 2%;
+        font-size: 35px;
+        color: $orange;
+        opacity: .9;
+        z-index: 2;
+        cursor: pointer;
+        opacity: 0;
+        pointer-events: none;
+        transition: all .5s;
+    }
+    #arrow-up.active{
+        opacity:1;
+        pointer-events: all;
+    }
+    
+}
+
+section.about-us{
+    min-height: 50vh;
+
+    .about-us-container{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 3.7rem 2rem;
+
+        .about{
+            width: 100%;
+            h2{
+                font-size: 2rem;
+                line-height: 2.4rem;
+                margin-bottom: 1.8rem;
+                span{
+                    font-size: 2rem;
+                    border-bottom: 2px solid $orange;
+                }
+            }
+            p{
+                font-size: 1.5rem;
+                line-height: 1.7rem;
+                margin-bottom: 1rem;
+            }
+        }
+
+        .contact{
+            display: flex;
+            justify-content: space-between;
+            h3{
+                font-size: 1.4rem;
+                text-transform: uppercase;
+                color: $orange;
+                margin-bottom: .7rem;
+            }
+            p{
+                font-size: 1.2rem;
+                line-height: 1.5rem;
+                margin-bottom: 1rem;
+            }
+
+        }
+    }
+    .carousel-container{
+        position: relative;
+        margin-top: 3rem;
+        margin-bottom: 2rem;
+        overflow-x: hidden;
+        // max-width: 1080px;
+
+
+        .carousel-slide{
+            display: flex;
+            width: 100%;
+            height: 250px;
+            img{
+                height: 100%;
+                width: 100%;
+            }
+        }
+        #prevBtn{
+            position: absolute;
+            top: 50%;
+            z-index: 1;
+            left: 5%;
+            font-size: 25px;
+            color: white;
+            opacity: .9;
+            cursor: pointer;
+        }
+        #nextBtn{
+            position: absolute;
+            top: 50%;
+            z-index: 1;
+            right: 5%;
+            font-size: 25px;
+            color: white;
+            opacity: .9;
+            cursor: pointer;
+        }
+    }
+}
+
+section.menu, section.drinks{
+    min-height: 100vh;
+    text-align: center;
+    padding-top: 50px;
+    padding-bottom: 50px;
+
+    .logo-container{
+        display: inline-block;
+        border-bottom: 3px solid black;
+        border-top: 3px solid black;
+        padding: 1rem 0;
+        text-transform: uppercase;
+        margin-bottom: 2%;
+        
+        span.logo-heading{
+            font-size: 3.8rem;
+            font-weight: bold;
+            letter-spacing: 1.3rem;
+        }
+        span.logo-subheading{
+            font-size: 1.5rem;
+            letter-spacing: 0.5rem;
+        }
+    }
+    h4.menu-section-heading{
+        font-size: 2rem;
+        text-transform: uppercase;
+        color: $orange;
+        margin: 5% 0;
+        font-weight: normal;
+    }
+    .menu-wrapper{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 5px 40px;
+        .item-heading{
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin-bottom: 1.5%;
+            h4{
+                font-size: 1.6rem;
+            }
+            p{
+                font-size: 1.5rem;
+            }
+        }
+        .menu-item-desc{
+            margin-bottom: 1%;
+            text-align: left;
+            font-size: 1.4rem;
+        }
+    }
+    
+}
+
+section.drinks{
+    padding-top: 80px;
+    padding-bottom: 50px;
+    background-color: #000;
+    background-image: linear-gradient(rgba(46, 46, 44, 0.8), rgba(46, 46, 44, 0.8)), url("/img/koktail.jpg");
+    background-size: cover;
+    background-position: center;
+    .logo-container{
+        border-bottom: 3px solid $white;
+        border-top: 3px solid $white;
+
+        span.logo-heading{
+            color: $white;
+        }
+        span.logo-subheading{
+            color: $white;
+        }
+    }
+
+    .menu-wrapper{
+        color: $white;
+    }
+}
+
+section.reservation{
+    padding: 100px 0;
+    width: 100%;
+    
+
+    .reservation-wrapper{
+        @include flexCenter();
+        flex-direction: column;
+        padding: 0 20px;
+        text-align: center;
+
+        h1{
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            color: $orange;
+            letter-spacing: 1px;
+        }
+
+        p{
+            padding: 5% 0;
+            font-size: 1.4rem;
+        }
+        a{
+        display: inline-block;
+        font-size: 1.4rem;
+        color: white;
+        text-transform: uppercase;
+        text-decoration: none;
+        background: #3e3939;
+        padding: 10px 16px;
+        border-radius: 15px;
+        outline: none;
+        text-decoration: none;
+        transition: color .3s;
+
+        &:hover{
+            color: $orange;
+        }
+        }
+
+    }
+}
+
+footer{
+    @include flexCenter();
+    flex-direction: column;
+
+    .social{
+        display:flex;
+        justify-content: center;
+        width: 100%;
+        padding: 15px 0;
+        background: #3E3939;
+        i.fab{
+            margin: 0 10px;
+            color: $white;
+            font-size: 2.5rem; 
+            transition: color .3s;
+            &:hover{
+                color: $orange;
+            }
+        }
+    }
+    .container{
+        width: 100%;
+        background: #222222;
+    p{
+        @include flexCenter();
+        min-height:80px;
+        font-size: 1.4rem;
+        color: $white;
+    }
+}
+}
+
+/* ANIMATIONS */
+.arrow div:nth-child(2){
+    animation-delay: .2s;
+}
+.arrow div:nth-child(3){
+    animation-delay: .4s;
+}
+@keyframes arrow{
+    0%{
+        opacity: 0;
+        transform: rotate(45deg) translate(-10px, -10px);
+    }
+    50%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+        transform: rotate(45deg) translate(10px, 10px);
+    }
+  }
+
+//   RWD
+
+@media (min-width: 600px){
+*{
+    font-size: 11px;
+
+}
+.arrow{
+    top: 80%;
+}
+
+section.about-us{
+    
+    .about-us-container{
+    flex-direction: row;
+
+    .about{
+        padding: 0 15px;
+    }
+    }
+    .contact{
+        flex-direction: column;
+        width: 40%;
+    }
+    .carousel-container{
+        .carousel-slide{
+            display: flex;
+            width: 100%;
+            height: 280px
+        }
+        }
+}
+}
+
+@media (min-width: 768px){
+
+section.start{
+
+    .motto-wrapper{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: $white;
+        h2{
+            font-size: 5.5rem;
+            margin-bottom: 3%;
+        }
+        p{
+            font-size: 2.3rem;
+            color: $orange;
+        }
+    }
+}
+section.about-us{
+    .carousel-container{
+        .carousel-slide{
+            display: flex;
+            width: 100%;
+            height: 310px;
+        }
+    }
+}
+}
+
+@media (min-width: 900px){
+    *{
+        font-size: 12px;
+    }
+    section.start{
+        .header{
+            .burger{
+                display: none;
+    }
+            .nav-links{
+                display: flex;
+                flex-direction: row;
+                position: static;
+                top: 0;
+                height: auto;
+                width: 100%;
+                pointer-events: all;
+                opacity: 1;
+    }
+            .nav-links.scroll{
+                position: fixed;
+                padding: 15px 15px;
+                background: #000;
+            }
+}
+    }
+    
+    section.about-us{
+        .about-us-container{
+            padding-top: 4.9rem;
+            flex-direction: row;
+            }
+            .contact{
+                width: 20%;
+            }
+        .carousel-container{
+            margin: 0 auto;
+            .carousel-slide{
+                display: flex;
+                width: 100%;
+                height: 330px;
+            }
+        }
+    }
+    section.menu, section.drinks{
+        .menu-wrapper{
+            Padding: 5px 85px
+            }
+    }
+}
+
+@media (min-width: 1024px){
+
+        section.about-us{
+            .about-us-container{
+                margin: 0 auto;
+                // max-width: 1080px;
+                flex-direction: row;
+                }
+                .contact{
+                    width: 20%;
+                }
+            .carousel-container{
+                margin: 0 auto;
+                .carousel-slide{
+                    display: flex;
+                    width: 100%;
+                    height: 450px;
+                }
+            }
+        }
+        section.menu, section.drinks{
+            .menu-wrapper{
+                Padding: 5px 85px
+                }
+        }
+    }
